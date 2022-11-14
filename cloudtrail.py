@@ -14,7 +14,7 @@ def Get_Cloudtrail_Status(name):
         response = cloudtrail_client.get_trail_status(
             Name=name
         )
-    except cloudtrail_client.exceptions.TrailNotFoundException:
+    except cloudtrail_client.exceptions.TrailNotFoundException: # This exception catches for Trails that are not found, and returns an Error Message
         raise NameError("That Cloudtrail Trail was not found")
     return response.get('IsLogging')
 
